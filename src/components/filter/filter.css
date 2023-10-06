@@ -1,0 +1,43 @@
+.filter {
+  display: flex;
+  width: max-content;
+
+  background-color: transparent;
+  border-radius: 15px;
+}
+
+button {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  font-size: 16px;
+
+  cursor: pointer;
+}
+
+.button {
+  padding: 5px 15px;
+  border-radius: 12px;
+  font-size: 1.2em;
+
+  background-color: transparent;
+
+  transition: all .2s;
+}
+
+.button--filled {
+  background-color: white;
+}
+
+.button--filled:hover {
+  background-color: var(--blue-bright);
+}
+
+.button--outline {
+  background-color: transparent;
+}
+
+.button--outline:hover {
+  background-color: white;
+
+}

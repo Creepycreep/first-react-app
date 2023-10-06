@@ -1,0 +1,26 @@
+.app__info {
+  padding: 20px;
+  border: 3px solid var(--blue-bright);
+  background-color: var(--blue);
+  border-radius: 30px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.app__info h1 {
+  align-self: center;
+
+  font-size: 2em;
+  font-weight: 700;
+}
+
+.app__info h2 {
+  font-size: 1.8em;
+  font-weight: 500;
+
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}

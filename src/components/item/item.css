@@ -1,0 +1,70 @@
+.item {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  width: 100%;
+
+  font-size: 1.2em;
+
+  background-color: #fff;
+  border-radius: 15px;
+}
+
+.fa,
+.fa-regular {
+  font-size: 1.2em;
+}
+
+.fa-star {
+  display: none;
+}
+
+.button--favourite {
+  transition: all .2 s;
+}
+
+.button--favourite .fa {
+  color: rgb(224, 76, 76);
+}
+
+.button--favourite .fa:hover {
+  color: black;
+}
+
+
+.button--favourite:hover {
+  color: rgb(224, 76, 76);
+}
+
+.item__input {
+  margin-left: auto;
+
+  border: none;
+  outline: none;
+  font-size: 1.2em;
+}
+
+.buttons-group {
+  display: flex;
+
+  align-items: center;
+  gap: 10px;
+}
+
+@media (max-width: 520px) {
+  .item {
+    flex-direction: column;
+    align-items: start;
+  }
+
+  .item__input {
+    margin-left: 0;
+    width: 150px;
+  }
+
+  .buttons-group {
+    width: 100%;
+    justify-content: space-between;
+  }
+}

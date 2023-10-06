@@ -1,0 +1,33 @@
+.form-add {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+
+  padding: 20px;
+  border: 3px solid var(--blue-bright);
+  background-color: var(--blue);
+  border-radius: 30px;
+}
+
+.form-add .form {
+  display: flex;
+  gap: 20px;
+}
+
+.form-add .form input {
+  border: none;
+  outline: none;
+
+  border: 3px solid white;
+  background-color: white;
+  border-radius: 15px;
+  padding: 5px 15px;
+
+  font-size: 1.2em;
+}
+
+@media (max-width: 520px) {
+  .form-add .form {
+    flex-direction: column;
+  }
+}
