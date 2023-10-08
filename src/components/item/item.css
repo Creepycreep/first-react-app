@@ -20,8 +20,9 @@
   display: none;
 }
 
+.button--favourite,
 .button--favourite {
-  transition: all .2 s;
+  transition: all .2s;
 }
 
 .button--favourite .fa {
@@ -35,6 +36,10 @@
 
 .button--favourite:hover {
   color: rgb(224, 76, 76);
+}
+
+.button--remove:hover {
+  color: rgb(129, 129, 129);
 }
 
 .item__input {

@@ -26,6 +26,18 @@
   font-size: 1.2em;
 }
 
+select {
+  border: none;
+  outline: none;
+
+  border: 3px solid white;
+  background-color: white;
+  border-radius: 15px;
+  padding: 5px 15px;
+
+  font-size: 1.2em;
+}
+
 @media (max-width: 520px) {
   .form-add .form {
     flex-direction: column;

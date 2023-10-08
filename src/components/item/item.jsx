@@ -1,6 +1,8 @@
 import './item.css'
 
-const Item = ({ title, step, fav }) => {
+const Item = (props) => {
+  const { title, step, fav, onDelete, onToggleFav } = props;
+
   const favGame = () => {
     let className = 'fa-heart';
     fav ? className += ' fa' : className += ' fa-regular'
@@ -8,17 +10,17 @@ const Item = ({ title, step, fav }) => {
   }
 
   return (
-    <li className='list__item item'>
+    <li className='list__item item' >
       <span>{title}</span>
 
       <input className='item__input' type="text" defaultValue={step} />
 
       <div className="buttons-group">
-        <button type='button' className='button--favourite'>
+        <button onClick={onToggleFav} type='button' className='button--favourite'>
           <i className={favGame()}></i>
         </button>
 
-        <button type='button' className='button--remove'>
+        <button onClick={onDelete} type='button' className='button--remove'>
           <i className='fa fa-trash'></i>
         </button>
       </div>
@@ -26,6 +28,7 @@ const Item = ({ title, step, fav }) => {
       <i className='fa fa-star'></i>
     </li>
   )
+
 }
 
 export default Item
