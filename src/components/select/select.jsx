@@ -11,24 +11,7 @@ class Select extends React.Component {
     this.inputRef = React.createRef();
 
     this.state = {
-      list: [
-        {
-          value: 'In progress',
-          id: 1,
-          active: true
-
-        },
-        {
-          value: 'Finished',
-          id: 2,
-          active: false
-        },
-        {
-          value: 'Infinity',
-          id: 3,
-          active: false
-        },
-      ],
+      list: this.props.selectList.map((item, i) => i === 0 ? { ...item, active: true } : { ...item, active: false }),
 
       isOpen: false,
     }
@@ -56,6 +39,12 @@ class Select extends React.Component {
     })
   }
 
+  listRender = (list) => {
+    this.setState({
+      list: list.map((item, i) => i === 0 ? { ...item, active: true } : { ...item, active: false })
+    })
+  }
+
   render() {
     const { onChange } = this.props;
     const { list, isOpen } = this.state;
@@ -69,7 +58,6 @@ class Select extends React.Component {
     })
 
     const value = list.find(item => item.active).value;
-
     const openClass = isOpen ? 'is-open' : '';
 
     return (

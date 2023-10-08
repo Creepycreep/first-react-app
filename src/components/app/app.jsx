@@ -42,6 +42,9 @@ class App extends Component {
           id: 4,
         },
       ],
+
+      term: '',
+      filter: 'all',
     }
   }
 
@@ -76,25 +79,76 @@ class App extends Component {
     }))
   }
 
+  searchGame = (term, items) => {
+    if (term.length == 0) {
+      return items;
+    }
+
+    return items.filter(item => {
+      return item.title.toLowerCase().indexOf(term.toLowerCase()) > -1
+    })
+  }
+
+  filterGame = (filter, items) => {
+    switch (filter) {
+      case 'fav':
+        return items.filter(item => {
+          return item[filter]
+        })
+
+      case 'all':
+        return items
+
+      default:
+        return items.filter(item => {
+          return item.step.toLowerCase() === filter.toLowerCase()
+        })
+    }
+  }
+
+  onFilterSelect = (filter) => {
+    this.setState({ filter })
+  }
+
+  onUpdateSearch = (term) => {
+    this.setState({ term })
+  }
+
   render() {
-    const { data } = this.state;
+    const { data, term, filter } = this.state;
 
     const total = data.length;
     const fav = data.filter(item => item.fav).length;
 
+    const visibleData = this.filterGame(filter, this.searchGame(term, data));
+
+    const list = [
+      {
+        value: 'In progress',
+        id: 1,
+      },
+      {
+        value: 'Finished',
+        id: 2,
+      },
+      {
+        value: 'Infinity',
+        id: 3,
+      },
+    ];
 
     return (
       <div className="app" >
         <AppInfo total={total} fav={fav} />
 
         <div className="app__filter-panel form">
-          <FormSearch />
-          <Filter />
+          <FormSearch onUpdateSearch={this.onUpdateSearch} />
+          <Filter list={list} onFilterSelect={this.onFilterSelect} />
         </div>
 
-        <List gameList={data} onDelete={this.deleteItem} onToggleFav={this.onToggleFav} />
+        <List gameList={visibleData} onDelete={this.deleteItem} onToggleFav={this.onToggleFav} />
 
-        <FormAdd onAdd={this.addItem} />
+        <FormAdd selectList={list} onAdd={this.addItem} />
       </div>
     )
   }

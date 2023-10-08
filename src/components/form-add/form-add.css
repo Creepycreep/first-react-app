@@ -26,6 +26,10 @@
   font-size: 1.2em;
 }
 
+.form-add .form button:disabled:hover {
+  background-color: transparent;
+}
+
 select {
   border: none;
   outline: none;

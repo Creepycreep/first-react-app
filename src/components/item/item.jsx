@@ -13,7 +13,7 @@ const Item = (props) => {
     <li className='list__item item' >
       <span>{title}</span>
 
-      <input className='item__input' type="text" defaultValue={step} />
+      <span className='item__progress'>{step}</span>
 
       <div className="buttons-group">
         <button onClick={onToggleFav} type='button' className='button--favourite'>

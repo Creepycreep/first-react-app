@@ -10,26 +10,40 @@ class FormAdd extends Component {
     this.state = {
       title: '',
       progress: 'In progress',
+
+      disabledSubmit: true
     }
   }
 
   onAddGameParams = (e) => {
-    this.setState({
+    this.setState(({
       [e.target.name]: e.target.value,
+    }))
+
+    this.setState(({ title }) => {
+      if (title.length >= 2) {
+        return {
+          disabledSubmit: false
+        }
+      } else {
+        return {
+          disabledSubmit: true
+        }
+      }
     })
-    // console.log(e.target.value)
   }
 
   onSubmit = (e) => {
     e.preventDefault();
     this.setState({
       title: '',
+      disabledSubmit: true
     })
   }
 
   render() {
-    const { onAdd } = this.props;
-    const { title, progress } = this.state;
+    const { onAdd, selectList } = this.props;
+    const { title, progress, disabledSubmit } = this.state;
     // this.onAddGameParams()
 
     return (
@@ -39,9 +53,9 @@ class FormAdd extends Component {
         <form onSubmit={this.onSubmit} className='form' action="">
           <input onChange={this.onAddGameParams} name="title" value={title} placeholder='Game title' type="text" />
 
-          <Select onChange={this.onAddGameParams} />
+          <Select selectList={selectList} onChange={this.onAddGameParams} />
 
-          <button onClick={(e) => onAdd(title, progress)} className='button button--outline' type='submit'>Add</button>
+          <button disabled={disabledSubmit} onClick={(e) => onAdd(title, progress)} className='button button--outline' type='submit'>Add</button>
         </form>
       </div>
     )

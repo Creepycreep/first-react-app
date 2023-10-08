@@ -42,12 +42,14 @@
   color: rgb(129, 129, 129);
 }
 
-.item__input {
+.item__progress {
   margin-left: auto;
 
   border: none;
   outline: none;
   font-size: 1.2em;
+
+  min-width: 150px;
 }
 
 .buttons-group {
