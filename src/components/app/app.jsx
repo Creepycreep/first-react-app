@@ -114,6 +114,7 @@ class App extends Component {
     this.setState({ term })
   }
 
+
   render() {
     const { data, term, filter } = this.state;
 
@@ -146,7 +147,7 @@ class App extends Component {
           <Filter list={list} onFilterSelect={this.onFilterSelect} />
         </div>
 
-        <List gameList={visibleData} onDelete={this.deleteItem} onToggleFav={this.onToggleFav} />
+        <List gameList={visibleData} onDelete={this.deleteItem} onToggleFav={this.onToggleFav} onProgressUpdate={this.onProgressUpdate} />
 
         <FormAdd selectList={list} onAdd={this.addItem} />
       </div>

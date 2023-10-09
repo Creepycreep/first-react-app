@@ -17,19 +17,12 @@ class Select extends React.Component {
     }
   }
 
-  onChoose = (id) => {
-    const prom = new Promise((resolve) => {
-      resolve(
-        this.setState(({ list }) => ({
-          list: list.map(item => item.id === id ? { ...item, active: true } : { ...item, active: false }),
-        }))
-      )
-    })
+  onChoose = (e, id) => {
+    this.setState(({ list }) => ({
+      list: list.map(item => item.id === id ? { ...item, active: true } : { ...item, active: false }),
+    }))
 
-    prom.then(() => {
-      this.inputRef.current.focus();
-    })
-
+    this.props.onChange(e);
     this.onOpen()
   }
 
@@ -46,14 +39,17 @@ class Select extends React.Component {
   }
 
   render() {
-    const { onChange } = this.props;
     const { list, isOpen } = this.state;
 
     const elements = list.map(item => {
       const isActive = item.active ? 'is-active' : '';
 
       return (
-        <div onClick={() => this.onChoose(item.id)} key={item.id} className={`select__item ${isActive}`}>{item.value}</div >
+        <label key={item.id} className={`select__item ${isActive}`}>
+          <input onClick={(e) => this.onChoose(e, item.id)} value={item.value} name="progress" type="radio" />
+
+          <span>{item.value}</span>
+        </label>
       )
     })
 
@@ -63,7 +59,7 @@ class Select extends React.Component {
     return (
       <div className={`select ${openClass}`}>
         <div onClick={this.onOpen} className="select__header">
-          <input ref={this.inputRef} name="progress" onChange={(e) => this.onChang(e)} onFocus={(e) => onChange(e)} type="text" value={value} />
+          <span >{value}</span>
 
           <i className="fa-solid fa-chevron-down"></i>
         </div>

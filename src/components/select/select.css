@@ -48,11 +48,17 @@ i.fa-solid {
   border-radius: 0 0 15px 15px;
 
   font-size: 1.2em;
+
 }
 
 .select__item {
+  display: block;
   line-height: 20px;
   padding: 5px 15px;
+}
+
+.select__item input {
+  display: none;
 }
 
 
