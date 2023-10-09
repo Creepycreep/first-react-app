@@ -44,7 +44,6 @@ class FormAdd extends Component {
   render() {
     const { onAdd, selectList } = this.props;
     const { title, progress, disabledSubmit } = this.state;
-    // this.onAddGameParams()
 
     return (
       <div className="form-add">

@@ -114,14 +114,20 @@ class App extends Component {
     this.setState({ term })
   }
 
+  setTodosWithSave = (data) => {
+    localStorage.setItem('data', JSON.stringify(data))
+  }
+
 
   render() {
     const { data, term, filter } = this.state;
 
     const total = data.length;
     const fav = data.filter(item => item.fav).length;
+    this.setTodosWithSave(data)
 
     const visibleData = this.filterGame(filter, this.searchGame(term, data));
+
 
     const list = [
       {
